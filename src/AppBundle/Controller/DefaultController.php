@@ -154,7 +154,7 @@ class DefaultController extends Controller
                 );                
         }
         
-        $title = "Moyenne de l'humeur des équipes du ". $dateStart->format('d/m/Y') ." au " . $dateEnd->format('d/m/Y');
+        $title = "L'humeur des collaborateurs du ". $dateStart->format('d/m/Y') ." au " . $dateEnd->format('d/m/Y');
         
         if($Feature){
             $title = "Moyenne de l'humeur de l'équipe ". $Feature->getName() ." du ". $dateStart->format('d/m/Y') ." au " . $dateEnd->format('d/m/Y');
