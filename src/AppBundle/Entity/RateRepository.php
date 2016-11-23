@@ -47,7 +47,9 @@ class RateRepository extends EntityRepository
              ->getQuery();
         
         
-        if(empty($query->getResult()))
+        $result = $query->getResult();
+        
+        if(empty($result))
         {
             return false;
         }
