@@ -45,7 +45,13 @@ class RateRepository extends EntityRepository
              ->setParameter('yesterday', $yesterday)
              ->setParameter('user_id', $user->getId())
              ->getQuery();
-
-        return empty($query->getResult()) ? false : true; 
+        
+        
+        if(empty($query->getResult()))
+        {
+            return false;
+        }
+        
+        return true;
     }
 }
