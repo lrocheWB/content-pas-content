@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        {#
+
+        {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        {{dump(rates)}}
+         #}
+        
+        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>        
+        {#
+        <form method="get" action="">            
+            <select name="feature_id">
+                <option>Feature</option>
+            {%for feature in features%}
+                <option value="{{feature.id}}">{{feature.name}}</option>
+            {%endfor%}
+            </select>
+        </form>
+        #}
+            
+        
+        <div class="container">
+            {#
+            Total des votes pour la période: {{total_rates}}
+             
+
+            {{ include('inc/nav.html.twig', { 'article': '' }) }}
+                #}
+		<script type="text/javascript">
+$(function () {
+    
+    
+    $('select[name="feature_id"]').on('change', function(){
+       $('form').submit(); 
+    });
+    
+    $('#container').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+        },
+        title: {
+            text: "{{title|raw}}"
+        },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+                
+                
+                
+        series: [{
+            name: 'Mood',
+            colorByPoint: true,
+            data: [ 
+                {%for stat in stats%}
+                {
+                    name: '{{stat.label}}',
+                    y: {{stat.percent}},
+                    {# sliced: true,
+                    selected: true#}
+                }, 
+                                        
+                {%endfor%}
+              ]
+        }]
+    });
+});
+		</script>    
+        </div>
+    </div>
+{% endblock %}

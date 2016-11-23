@@ -1,0 +1,19 @@
+{% extends 'base-mail.html.twig' %}
+
+{% block body %}
+Bonjour {{user.email}},<br><br>
+Alors, comment s'est passée cette journée du {{ "now"|date("d/m/Y") }} ?<br>
+Merci de cliquer sur le terme qui vous semble le plus approprié :<br><br>
+•	<a href="{{ url('rate', {'token': user.token, 'rating': '5', 'date' : "now"|date("m/d/Y H:i:s")}) }}">Excellente journée</a><br><br>
+•	<a href="{{ url('rate', {'token': user.token, 'rating': '4', 'date' : "now"|date("m/d/Y H:i:s")}) }}">Bonne journée</a><br><br>
+•	<a href="{{ url('rate', {'token': user.token, 'rating': '3', 'date' : "now"|date("m/d/Y H:i:s")}) }}">Journée neutre / normale</a><br><br>
+•	<a href="{{ url('rate', {'token': user.token, 'rating': '2', 'date' : "now"|date("m/d/Y H:i:s")}) }}">Journée difficile</a><br><br>
+•	<a href="{{ url('rate', {'token': user.token, 'rating': '1', 'date' : "now"|date("m/d/Y H:i:s")}) }}">Mauvaise journée</a><br><br><br>
+(pour rappel, c'est anonyme).<br><br>
+En indiquant votre ressenti, vous pourrez visualiser l'ambiance globale au sein de votre équipe. <br><br>
+A bientôt,<br><br>
+Benjamin
+{% endblock %}
+
+        
+
