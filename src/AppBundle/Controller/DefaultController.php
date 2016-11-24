@@ -71,6 +71,7 @@ class DefaultController extends Controller
         $rating         = $request->query->get('rating');
         $date           = $request->query->get('date');
         
+        
         $user_repository = $this->getDoctrine()->getRepository('AppBundle:User');
         $rate_repository = $this->getDoctrine()->getRepository('AppBundle:Rate');
 
