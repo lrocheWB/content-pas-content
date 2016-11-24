@@ -163,7 +163,7 @@ class DefaultController extends Controller
         
         
         $form = $this->createFormBuilder()
-            ->add('sprint_start', \Symfony\Component\Form\Extension\Core\Type\ChoiceType::class, array(
+            ->add('sprint_start', 'choice', array(
                 'choices' => $sprintPeriods,
                 'label'   => 'Sprint',
                 'data'    => ''
